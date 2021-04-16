@@ -22,15 +22,6 @@ e) �El factorial de A es: r1 y El factorial de B es: r2�
  ============================================================================
  */
 
-/** \brief Pedir tipo de operacion, dos numeros y mostrar resutados
- *  \param int limite: Limite del array
- *  \param int indice: Indica en que posicion cargar los datos
- *  \param char[] nombre: Es el nombre de la persona
- *  \param char[] apellido: Es el apellido de la persona
- *  \param float altura: Es la altura de la persona expresada en metros
- *  \param float peso: Es el peso de la persona expresado en kilos
- *  \return int
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include "utn.h"

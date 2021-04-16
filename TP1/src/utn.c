@@ -9,7 +9,16 @@
 #include <stdlib.h>
 #include "utn.h"
 
-
+/*	\brief Pedir tipo de operacion, dos numeros y mostrar resultados
+ *  \param char* pTextoOperacion: Le pide al usuario que ingrese un operador
+ *  \param char* pTextoNumA: Le pide al usuario que ingrese el primer numero
+ *  \param char* pTextoNumB: Le pide al usuario que ingrese el segundo numero
+ *  \param char* pTextoError: Indica si lo que ingreso el usuario no es un numero
+ *  \param int* pNumeroA: Es el primer numero ingresado
+ *  \param int* pNumeroB: Es el segundo numero ingresado
+ *  \param char* pOperacion: Es el operador
+ *  \return retorno = -1 error, retorno = 0 exito
+*/
 int utn_getNumero (char* pTextoOperacion, char* pTextoNumA, char* pTextoNumB, char* pTextoError, int* pNumeroA, int* pNumeroB, char* pOperacion)
 {
 	int retorno = -1;
@@ -56,6 +65,13 @@ int utn_getNumero (char* pTextoOperacion, char* pTextoNumA, char* pTextoNumB, ch
 	return retorno;
 }
 
+/*	\brief : realizar la suma
+ *  \param int operadorA: Primer numero ingresado
+ *  \param int operadorB: Segundo numero ingresado
+ *  \param int* pResultado: Resultado de la suma
+ *  \return retorno = -1 error, retorno = 0 exito
+*/
+
 int utn_getSumar (int operadorA, int operadorB, int* pResultado)
 {
 	int retorno = -1;
@@ -67,6 +83,13 @@ int utn_getSumar (int operadorA, int operadorB, int* pResultado)
 	return retorno;
 }
 
+
+/*	\brief : Realizar la resta
+ *  \param int operadorA: Primer numero ingresado
+ *  \param int operadorB: Segundo numero ingresado
+ *  \param int* pResultado: Resultado de la resta
+ *  \return retorno = -1 error, retorno = 0 exito
+*/
 int utn_getRestar (int operadorA, int operadorB, int* pResultado)
 {
 	int retorno = -1;
@@ -78,6 +101,13 @@ int utn_getRestar (int operadorA, int operadorB, int* pResultado)
 	return retorno;
 }
 
+
+/*	\brief : realizar la multiplicacion
+ *  \param int operadorA: Primer numero ingresado
+ *  \param int operadorB: Segundo numero ingresado
+ *  \param int* pResultado: Resultado de la multiplicacion
+ *  \return retorno = -1 error, retorno = 0 exito
+*/
 int utn_getMultiplicar (int operadorA, int operadorB, int* pResultado)
 {
 	int retorno = -1;
@@ -89,6 +119,12 @@ int utn_getMultiplicar (int operadorA, int operadorB, int* pResultado)
 	return retorno;
 }
 
+/*	\brief : realizar la division
+ *  \param int operadorA: Primer numero ingresado
+ *  \param int operadorB: Segundo numero ingresado
+ *  \param int* pResultado: Resultado de la division
+ *  \return retorno = -1 error, retorno = 0 exito
+*/
 int utn_getDividir (int operadorA, int operadorB, float* pResultado)
 {
 	int retorno = -1;
@@ -104,6 +140,13 @@ int utn_getDividir (int operadorA, int operadorB, float* pResultado)
 	return retorno;
 }
 
+/*	\brief : realizar el factoreo
+ *  \param int operadorA: Primer numero ingresado
+ *  \param int operadorB: Segundo numero ingresado
+ *  \param int* pResultadoA: Resultado del factoreo del primer numero ingresado
+ *  \param int* pResultadoB: Resultado del factoreo del segundo numero ingresado
+ *  \return retorno = -1 error, retorno = 0 exito
+*/
 int utn_getFactorear (int operadorA, int operadorB, int* pResultadoA, int* pResultadoB)
 {
 	int retorno = -1;
