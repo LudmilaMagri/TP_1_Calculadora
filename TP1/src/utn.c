@@ -18,15 +18,15 @@
 int utn_getMenu (char* pTextoMenu, int* pNumeroMenu)
 {
 	int retorno = -1;
-			printf ("%s", pTextoMenu);
-			fflush(stdin);
-			if (scanf ("%d", pNumeroMenu)==1)
+		printf ("%s", pTextoMenu);
+		fflush(stdin);
+		if (scanf ("%d", pNumeroMenu)==1)
+		{
+			if (pNumeroMenu != NULL)
 			{
-				if (pNumeroMenu != NULL)
-				{
-					retorno = 0;
-				}
+				retorno = 0;
 			}
+		}
 
 	return retorno;
 }
@@ -91,7 +91,7 @@ int utn_getNumeroB (char* pTextoNumB, char* pTextoError, int* pNumeroB)
 		}
 
 	return retorno;
-}
+	}
 
 /*	\brief : realizar la suma
  *  \param int operadorA: Primer numero ingresado

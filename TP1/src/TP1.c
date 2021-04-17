@@ -45,52 +45,52 @@ int main(void) {
 								"\n2. Ingresar 2do operando (B=y)"
 								"\n3. Calcular todas las operaciones "
 								"\n4. Informar resultados\n5. Salir\n", &menu);
-			switch (menu)
-			{
-				case 1:
-					if (respuesta == 0 && respuesta == utn_getNumeroA ("Ingrese el 1er operando", "Error. Lo que ingreso no es valido. Escriba un numero\n", &numeroA))
-					{
-						printf ("El 1er operando es : %d \n", numeroA);
-						flagNumA = 1;
-					}
-					break;
-				case 2:
-					if (respuesta == 0 && respuesta == utn_getNumeroB ("Ingrese el 2do operando", "Error. Lo que ingreso no es valido. Escriba un numero\n", &numeroB))
-					{
-						printf ("El 2do operando es: %d \n", numeroB);
-						flagNumB = 1;
-					}
+		switch (menu)
+		{
+			case 1:
+				if (respuesta == 0 && respuesta == utn_getNumeroA ("Ingrese el 1er operando", "Error. Lo que ingreso no es valido. Escriba un numero\n", &numeroA))
+				{
+					printf ("El 1er operando es : %d \n", numeroA);
+					flagNumA = 1;
+				}
+				break;
+			case 2:
+				if (respuesta == 0 && respuesta == utn_getNumeroB ("Ingrese el 2do operando", "Error. Lo que ingreso no es valido. Escriba un numero\n", &numeroB))
+				{
+					printf ("El 2do operando es: %d \n", numeroB);
+					flagNumB = 1;
+				}
 
-					break;
-				case 3:
-					if (flagNumA == 0 || flagNumB == 0)
-					{
-						printf ("\nPor favor ingrese la opcion (1) y (2) para ingresar numeros antes de calcular las operaciones\n");
-					}
-					else
-					{
-						printf ("\nPulse el numero 4 para obtener los resultados de las operaciones\n");
-					}
-					break;
-				case 4:
-					if (flagNumA == 0 || flagNumB == 0)
-					{
-						printf ("\nPor favor ingrese la opcion (1) y (2) para ingresar numeros antes de informar los resultados\n");
-					}
-					else
-					{
-						if (respuesta == 0 && respuesta == utn_getSumar (numeroA, numeroB, &resultadoSuma))
-							printf ("\nEl resultado de %d + %d es: %d", numeroA, numeroB, resultadoSuma);
-						if (respuesta == 0 && respuesta == utn_getRestar (numeroA, numeroB, &resultadoResta))
-							printf ("\nEl resultado de %d - %d es: %d", numeroA, numeroB, resultadoResta);
-						if (respuesta == 0 && respuesta == utn_getDividir(numeroA, numeroB, &resultadoDivision))
-							printf ("\nEl resultado de %d / %d es:%2.f", numeroA, numeroB, resultadoDivision);
-						if (respuesta == 0 && respuesta == utn_getMultiplicar(numeroA, numeroB, &resultadoMultiplicacion))
-							printf ("\nEl resultado de %d * %d es: %d", numeroA, numeroB, resultadoMultiplicacion);
-						if (respuesta == 0 && respuesta == utn_getFactorear(numeroA, numeroB, &resultadoFactorialA, &resultadoFactorialB))
-							printf ("\nEl factorial de %d! es: %d y el factorial de %d! es: %d \n", numeroA, resultadoFactorialA, numeroB, resultadoFactorialB);
-					}
-					break;
+				break;
+			case 3:
+				if (flagNumA == 0 || flagNumB == 0)
+				{
+					printf ("\nPor favor ingrese la opcion (1) y (2) para ingresar numeros antes de calcular las operaciones\n");
+				}
+				else
+				{
+					printf ("\nPulse el numero 4 para obtener los resultados de las operaciones\n");
+				}
+				break;
+			case 4:
+				if (flagNumA == 0 || flagNumB == 0)
+				{
+					printf ("\nPor favor ingrese la opcion (1) y (2) para ingresar numeros antes de informar los resultados\n");
+				}
+				else
+				{
+					if (respuesta == 0 && respuesta == utn_getSumar (numeroA, numeroB, &resultadoSuma))
+						printf ("\nEl resultado de %d + %d es: %d", numeroA, numeroB, resultadoSuma);
+					if (respuesta == 0 && respuesta == utn_getRestar (numeroA, numeroB, &resultadoResta))
+						printf ("\nEl resultado de %d - %d es: %d", numeroA, numeroB, resultadoResta);
+					if (respuesta == 0 && respuesta == utn_getDividir(numeroA, numeroB, &resultadoDivision))
+						printf ("\nEl resultado de %d / %d es:%2.f", numeroA, numeroB, resultadoDivision);
+					if (respuesta == 0 && respuesta == utn_getMultiplicar(numeroA, numeroB, &resultadoMultiplicacion))
+						printf ("\nEl resultado de %d * %d es: %d", numeroA, numeroB, resultadoMultiplicacion);
+					if (respuesta == 0 && respuesta == utn_getFactorear(numeroA, numeroB, &resultadoFactorialA, &resultadoFactorialB))
+						printf ("\nEl factorial de %d! es: %d y el factorial de %d! es: %d \n", numeroA, resultadoFactorialA, numeroB, resultadoFactorialB);
+				}
+				break;
 			}
 	}while (menu!=5);
 
