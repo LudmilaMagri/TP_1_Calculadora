@@ -186,12 +186,12 @@ int utn_getFactorear (int operadorA, int operadorB, int* pResultadoA, int* pResu
 		for (int x = operadorA; x>1; x--)
 		{
 			factorialX*= x;
-			*pResultadoA= factorialX;
+			*pResultadoA = factorialX;
 		}
 		for (int y = operadorB; y>1; y--)
 		{
 			factorialY*= y;
-			*pResultadoB= factorialY;
+			*pResultadoB = factorialY;
 		}
 	}
 	else

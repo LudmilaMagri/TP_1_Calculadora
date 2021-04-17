@@ -84,7 +84,7 @@ int main(void) {
 					if (respuesta == 0 && respuesta == utn_getRestar (numeroA, numeroB, &resultadoResta))
 						printf ("\nEl resultado de %d - %d es: %d", numeroA, numeroB, resultadoResta);
 					if (respuesta == 0 && respuesta == utn_getDividir(numeroA, numeroB, &resultadoDivision))
-						printf ("\nEl resultado de %d / %d es:%2.f", numeroA, numeroB, resultadoDivision);
+						printf ("\nEl resultado de %d / %d es:%.2f", numeroA, numeroB, resultadoDivision);
 					if (respuesta == 0 && respuesta == utn_getMultiplicar(numeroA, numeroB, &resultadoMultiplicacion))
 						printf ("\nEl resultado de %d * %d es: %d", numeroA, numeroB, resultadoMultiplicacion);
 					if (respuesta == 0 && respuesta == utn_getFactorear(numeroA, numeroB, &resultadoFactorialA, &resultadoFactorialB))
