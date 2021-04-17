@@ -9,43 +9,45 @@
 #include <stdlib.h>
 #include "utn.h"
 
-/*	\brief Pedir tipo de operacion, dos numeros y mostrar resultados
- *  \param char* pTextoOperacion: Le pide al usuario que ingrese un operador
- *  \param char* pTextoNumA: Le pide al usuario que ingrese el primer numero
- *  \param char* pTextoNumB: Le pide al usuario que ingrese el segundo numero
- *  \param char* pTextoError: Indica si lo que ingreso el usuario no es un numero
- *  \param int* pNumeroA: Es el primer numero ingresado
- *  \param int* pNumeroB: Es el segundo numero ingresado
- *  \param char* pOperacion: Es el operador
+/*	\brief : Mostrar menu
+ *  \param char* pTextoMenu: Texto del menu
+ *  \param int* pNumeroMenu: Ingresar el numero del menu de opciones
  *  \return retorno = -1 error, retorno = 0 exito
 */
-int utn_getNumero (char* pTextoOperacion, char* pTextoNumA, char* pTextoNumB, char* pTextoError, int* pNumeroA, int* pNumeroB, char* pOperacion)
+
+int utn_getMenu (char* pTextoMenu, int* pNumeroMenu)
+{
+	int retorno = -1;
+			printf ("%s", pTextoMenu);
+			fflush(stdin);
+			if (scanf ("%d", pNumeroMenu)==1)
+			{
+				if (pNumeroMenu != NULL)
+				{
+					retorno = 0;
+				}
+			}
+
+	return retorno;
+}
+
+/*	\brief : Pedir el primer numero
+ *  \param char* pTextoNumA: Texto para pedir un numero
+ *  \param char* pTextoError: Indica si lo que ingreso el usuario no es un numero
+ *  \param int* pNumeroA: Es el primer numero ingresado
+ *  \return retorno = -1 error, retorno = 0 exito
+*/
+int utn_getNumeroA (char* pTextoNumA, char* pTextoError, int* pNumeroA)
 {
 	int retorno = -1;
 
-	printf ("%s", pTextoOperacion);
-	fflush(stdin);
-	if (scanf ("%c", pOperacion) ==1)
-	{
-		if (*pOperacion == '+' || *pOperacion == '-' || *pOperacion == '*' || *pOperacion == '/' || *pOperacion == '!')
+		printf ("%s \n", pTextoNumA);
+		fflush(stdin);
+		if (scanf ("%d", pNumeroA) ==1)
 		{
-			printf ("%s \n", pTextoNumA);
-			fflush(stdin);
-			if (scanf ("%d", pNumeroA) ==1)
+			if (pNumeroA != NULL)
 			{
-			    printf ("%s \n", pTextoNumB);
-		        fflush(stdin);
-				if (scanf ("%d", pNumeroB) ==1)
-				{
-				    if (pNumeroA != NULL && pNumeroB != NULL)
-				    {
-					    retorno= 0;
-				    }
-				}
-				else
-				{
-					printf ("%s", pTextoError);
-				}
+				retorno= 0;
 			}
 			else
 			{
@@ -54,13 +56,39 @@ int utn_getNumero (char* pTextoOperacion, char* pTextoNumA, char* pTextoNumB, ch
 		}
 		else
 		{
-			printf ("\nNo es correcto ese tipo de operacion");
+			printf ("%s", pTextoError);
 		}
-	}
-	else
-	{
-		printf ("Error");
-	}
+
+	return retorno;
+}
+
+/*	\brief : Pedir el segundo numero
+ *  \param char* pTextoNumB: Texto para pedir un numero
+ *  \param char* pTextoError: Indica si lo que ingreso el usuario no es un numero
+ *  \param int* pNumeroB: Es el primer numero ingresado
+ *  \return retorno = -1 error, retorno = 0 exito
+ */
+int utn_getNumeroB (char* pTextoNumB, char* pTextoError, int* pNumeroB)
+{
+	int retorno = -1;
+
+		printf ("%s \n", pTextoNumB);
+		fflush(stdin);
+		if (scanf ("%d", pNumeroB) ==1)
+		{
+			if (pNumeroB != NULL)
+			{
+				retorno= 0;
+			}
+			else
+			{
+				printf ("%s", pTextoError);
+			}
+		}
+		else
+		{
+			printf ("%s", pTextoError);
+		}
 
 	return retorno;
 }
@@ -82,7 +110,6 @@ int utn_getSumar (int operadorA, int operadorB, int* pResultado)
 	}
 	return retorno;
 }
-
 
 /*	\brief : Realizar la resta
  *  \param int operadorA: Primer numero ingresado
