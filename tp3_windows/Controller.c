@@ -102,7 +102,6 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee, int* pI
 		}
 		fclose(fpArchivo);
 	}
-	printf("\nId max: %d\n", *pIdMax);
 
     return retorno;
 }
@@ -126,7 +125,6 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee, int* 
 			*pIdMax = parser_EmployeeFromBinary(pFile, pArrayListEmployee);
 			employee_valorInicialId(*pIdMax);
 			printf("\nDatos cargados correctamente en modo binario\n");
-			printf("\nEl id max: %d\n", *pIdMax);
 			retorno = 0;
 		}
 		else
@@ -290,7 +288,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 	char id[5000];
 	int flag;
 	char* pNombre;
-	char sueldoAux[5000];
+	float sueldoAux;
 	char horasAux[5000];
 
 	if (pArrayListEmployee!= NULL)
@@ -302,9 +300,9 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 			{
 				employee_getIdTxt(pE, id);
 				pNombre = employee_getNombre(pE, &flag);
-				employee_getSueldoTxt(pE, sueldoAux);
+				sueldoAux = employee_getSueldo(pE, &flag);
 				employee_getHorasTrabajadasTxt(pE, horasAux);
-				printf("\n ID: %s - NOMBRE: %s - SUELDO: $%s - HORAS: %s\n", id, pNombre, sueldoAux,horasAux );
+				printf("\n ID: %s - NOMBRE: %s - SUELDO: $%.2f - HORAS: %s\n", id, pNombre, sueldoAux,horasAux );
 				retorno = 0;
 			}
 		}
@@ -376,7 +374,6 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
  *
  */
 
-//serializador
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 {
 	int retorno = -1;
@@ -405,7 +402,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 						fprintf(pFile, "%d, %s, %d, %2.f\n", idAux, nombreAux, horasAux, sueldoAux);
 				}
 			}
-			printf("\nGuardado exitosamente\n");
+			printf("\nGuardado exitosamente en modo texto\n");
 			fclose(pFile);
 		}
 	}
@@ -440,7 +437,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 			}
 		}
 		fclose(pFile);
-		printf("Datos guardados ok");
+		printf("\nDatos guardados exitosamente en modo binario\n");
 	}
     return retorno;
 }

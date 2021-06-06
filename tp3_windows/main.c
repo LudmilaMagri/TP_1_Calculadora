@@ -5,16 +5,7 @@
 #include "Employee.h"
 #include "utn.h"
 
-/*
-// ORDEN
-// opcion 1 (leer texto)
-// opcion 6 (listar)
-// opcion 9 (escribir binario)
-// opcion 2 (leer binario)
-// opcion 8 (escribir texto)
-// ABM
-// Ordenar
- * */
+// Ludmila Magri
 
 /****************************************************
     Menu:
