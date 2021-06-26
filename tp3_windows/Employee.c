@@ -4,7 +4,6 @@
 #include <string.h>
 #include "Employee.h"
 #include "utn.h"
-
 Employee* employee_new (void)
 {
 	return (Employee*) malloc(sizeof(Employee));
@@ -18,7 +17,7 @@ Employee* employee_newParametrosTxt(char* idStr,char* nombreStr,char* horasTraba
 		if (employee_setNombre(auxEmpleado, nombreStr) <0 ||
 			employee_setId(auxEmpleado, atoi(idStr)) <0 ||
 			employee_setHorasTrabajadas(auxEmpleado,atoi(horasTrabajadasStr)) <0 ||
-			employee_setSueldo(auxEmpleado, atof(sueldo)) <0 )
+			employee_setSueldo(auxEmpleado, atoi(sueldo)) <0 )
 		{
 			employee_delete2(auxEmpleado);
 			auxEmpleado = NULL;
@@ -27,7 +26,7 @@ Employee* employee_newParametrosTxt(char* idStr,char* nombreStr,char* horasTraba
 	}
 	return auxEmpleado;
 }
-Employee* employee_newParametros(int idStr,char* nombreStr, int horasTrabajadasStr, float sueldo)
+Employee* employee_newParametros(int idStr,char* nombreStr, int horasTrabajadasStr, int sueldo)
 {
 	Employee* auxEmpleado = employee_new();
 	if (auxEmpleado != NULL  && nombreStr!=NULL)
@@ -75,7 +74,7 @@ int employee_setIdTxt(Employee* this, char* id)
 	int retorno = -1;
 	if (this != NULL && id !=NULL)
 	{
-		if (employee_isValidId(id))
+		if (employee_isValidId(id)==1)
 		{
 			retorno =0;
 			this->id =atoi(id);
@@ -118,13 +117,18 @@ int employee_getIdTxt(Employee* this,char* id)
 }
 int employee_isValidId(char* id)
 {
-	return 1;
+	int ret =-1;
+	if (id!=NULL && esNumerica(id, 50000))
+	{
+		ret = 1;
+	}
+	return ret;
 }
 
 int employee_setNombre(Employee* this,char* nombre)
 {
 	int retorno = -1;
-	if (this != NULL && nombre != NULL && employee_isValidNombre (nombre))
+	if (this != NULL && nombre != NULL && employee_isValidNombre(nombre))
 	{
 		strcpy(this->nombre, nombre);
 		retorno = 0;
@@ -156,7 +160,7 @@ int employee_getNombre2(Employee* this, char* nombre)
 int employee_isValidNombre(char* nombre)
 {
 	int retorno = -1;
-	if(nombre!=NULL && esSoloLetras(nombre, 99999)==0)
+	if(nombre != NULL && esSoloLetras(nombre, 9999999))
 	{
 		retorno = 0;
 	}
@@ -213,7 +217,7 @@ int employee_getHorasTrabajadasTxt(Employee* this,char* horasTrabajadas)
 int employee_isValidHorasTrabajadas(char* horasTrabajadas)
 {
 	int retorno = -1;
-	if(horasTrabajadas!=NULL && esNumerica(horasTrabajadas, 9999999)==0)
+	if(horasTrabajadas!=NULL && esNumerica(horasTrabajadas, 9999999)==1)
 	{
 		retorno =0;
 	}
@@ -260,7 +264,7 @@ int employee_getSueldoTxt(Employee* this, char* sueldo)
 	int retorno= -1;
 	if (this != NULL && sueldo != NULL)
 	{
-		sprintf(sueldo, "%f",this->sueldo);
+		sprintf(sueldo, "%d",this->sueldo);
 		retorno = 0;
 	}
 	return retorno;
@@ -307,7 +311,7 @@ int employee_funcionCriterioSueldo (void* a, void* b)
 
 	pA = (Employee*) a;
 	pB = (Employee*) b;
-	float sueldo1, sueldo2;
+	int sueldo1, sueldo2;
 	int flag;
 
 	sueldo1=employee_getSueldo(pA, &flag);

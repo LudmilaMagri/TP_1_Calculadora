@@ -5,12 +5,12 @@ typedef struct
     int id;
     char nombre[128];
     int horasTrabajadas;
-    float sueldo;
+    int sueldo;
 }Employee;
 
 Employee* employee_new();
 Employee* employee_newParametrosTxt(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldo);
-Employee* employee_newParametros(int idStr,char* nombreStr, int horasTrabajadasStr, float sueldo);
+Employee* employee_newParametros(int idStr,char* nombreStr, int horasTrabajadasStr, int sueldo);
 
 void employee_delete(Employee* this);
 int employee_delete2(Employee* this);

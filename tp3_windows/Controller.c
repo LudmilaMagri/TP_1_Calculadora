@@ -149,14 +149,14 @@ int controller_addEmployee(LinkedList* pArrayListEmployee)
 	Employee* pE;
 	int newId;
 	char nombre [5000];
-	float sueldo;
+	int sueldo;
 	int horas;
 
 	if(pArrayListEmployee!= NULL)
 	{
 		pE = employee_new();
 		if(utn_getNombre(nombre, 5000, "\nIngrese un nombre\n", "\nError\n", 3)==0 &&
-			utn_getNumeroFlotante(&sueldo, "\nIngrese el sueldo\n", "\nError\n", 0, 1000000, 3)==0 &&
+			utn_getNumeroInt(&sueldo, "\nIngrese el sueldo\n", "\nError\n", 0, 1000000, 3)==0 &&
 			utn_getNumeroInt(&horas, "\nIngrese las horas trabajadas\n", "\nError\n", 0, 50000, 3)==0 &&
 			pE != NULL)
 		{
@@ -212,7 +212,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 	int idPedido;
 	Employee* pEmpEdit;
 	char nombre [5000];
-	float sueldo;
+	int sueldo;
 	int horas;
 	if(pArrayListEmployee!=  NULL)
 	{
@@ -222,7 +222,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
 			if(pEmpEdit!= NULL)
 			{
 				if(utn_getNombre(nombre, 5000, "\nIngrese un nombre\n", "\nError\n", 3)==0 &&
-					utn_getNumeroFlotante(&sueldo, "\nIngrese el sueldo\n", "\nError\n", 0, 1000000, 3)==0 &&
+					utn_getNumeroInt(&sueldo, "\nIngrese el sueldo\n", "\nError\n", 0, 1000000, 3)==0 &&
 					utn_getNumeroInt(&horas, "\nIngrese las horas trabajadas\n", "\nError\n", 0, 50000, 3)==0)
 				{
 					if(employee_setNombre(pEmpEdit, nombre)==0 && employee_setSueldo(pEmpEdit, sueldo)== 0 &&
@@ -288,7 +288,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 	char id[5000];
 	int flag;
 	char* pNombre;
-	float sueldoAux;
+	int sueldoAux;
 	char horasAux[5000];
 
 	if (pArrayListEmployee!= NULL)
@@ -302,7 +302,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
 				pNombre = employee_getNombre(pE, &flag);
 				sueldoAux = employee_getSueldo(pE, &flag);
 				employee_getHorasTrabajadasTxt(pE, horasAux);
-				printf("\n ID: %s - NOMBRE: %s - SUELDO: $%.2f - HORAS: %s\n", id, pNombre, sueldoAux,horasAux );
+				printf("\n ID: %s - NOMBRE: %s - SUELDO: $%d - HORAS: %s\n", id, pNombre, sueldoAux,horasAux );
 				retorno = 0;
 			}
 		}
@@ -381,7 +381,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 	FILE* pFile;
 	Employee* pE;
 	int flag, idAux, horasAux;
-	float sueldoAux;
+	int sueldoAux;
 	char* nombreAux;
 
 	if (path!= NULL && pArrayListEmployee != NULL)
@@ -399,7 +399,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 						horasAux=employee_getHorasTrabajadas(pE, &flag);
 						nombreAux= employee_getNombre(pE, &flag);
 						sueldoAux = employee_getSueldo(pE, &flag);
-						fprintf(pFile, "%d, %s, %d, %2.f\n", idAux, nombreAux, horasAux, sueldoAux);
+						fprintf(pFile, "%d, %s, %d, %d\n", idAux, nombreAux, horasAux, sueldoAux);
 				}
 			}
 			printf("\nGuardado exitosamente en modo texto\n");

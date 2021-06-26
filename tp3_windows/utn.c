@@ -853,10 +853,14 @@ static int getTexto (char* pResultado, int longitud){
 int esSoloLetras (char* cadena, int longitud){
 	int retorno = 1;
 	int i;
-	if (cadena != NULL){
-		for (i= 0; cadena [i] != '\0'; i++){
+	if (cadena != NULL)
+	{
+		for (i= 0; cadena [i] != '\0'; i++)
+		{
 			if ((cadena[i] != ' ') && (cadena [i] < 'a' || cadena [i]> 'z') && (cadena [i]< 'A' || cadena [i]> 'Z'))
+			{
 				retorno = 0;
+			}
 			if(cadena[i]== '-')
 				retorno = 1;
 		}
