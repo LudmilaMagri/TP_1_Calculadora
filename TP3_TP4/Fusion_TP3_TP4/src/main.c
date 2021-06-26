@@ -42,8 +42,11 @@ int main()
 							"\n\t*	6. Listar empleados\t\t\t\t\t\t\t*"
 							"\n\t*	7. Ordenar empleados\t\t\t\t\t\t\t*"
 							"\n\t*	8. Guardar los datos de los empleados en el archivo (modo texto).\t*"
-							"\n\t*	9. Guardar los datos de los empleados en el archivo (modo binario).\t*"
-							"\n\t*	10. Salir\t\t\t\t\t\t\t\t*"
+							"\n\t*	9. Guardar los datos de los empleados en el archivo (modo binario).\t*\n"
+							"\n\t*	***********Funciones para probar LinkedList************************.\t*\n"
+							"\n\t*	10. Clonar la lista y guardarla en otro archivo.\t*"
+							"\n\t*	11. Consultar si la lista de empleados esta vacia\t*"
+							"\n\t*	0. Salir\t\t\t\t\t\t\t\t*"
 							"\n\t--------------------------------------------------------------------------------\n\n\n\n\n",
 							"\nError opcion invalida", 0, 11, 2))
     	{
@@ -76,9 +79,15 @@ int main()
 				case 9:
 					controller_saveAsBinary("dataBinario.bin", listaEmpleados);
 					break;
+				case 10:
+					controller_cloneList(listaEmpleados, "ListaClonada.csv");
+					break;
+				case 11:
+					controller_isEmptyList(listaEmpleados);
+					break;
 			}
     	}
-    }while(option != 10);
+    }while(option != 0);
 
     return 0;
 }

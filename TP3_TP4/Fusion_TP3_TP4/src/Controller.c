@@ -278,6 +278,7 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
     return retorno;
 }
 
+
 /** \brief Listar empleados
  *
  * \param path char*
@@ -414,6 +415,7 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
     return retorno;
 }
 
+
 /** \brief Guarda los datos de los empleados en el archivo data.csv (modo binario).
  *
  * \param path char*
@@ -446,4 +448,75 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 	}
     return retorno;
 }
+/** \brief Crea una copia de la lista comparando si estan todos los valores
+ *
+ * \param pList LinkedList* Puntero a la lista
+ * \return LinkedList* Retorna  (-1) Error
+                                (0) Si ok
+*/
 
+int controller_cloneList (LinkedList* pArrayListEmployee, char* pFile)
+{
+	int retorno = -1;
+	int respuesta;
+	LinkedList* pL;
+
+	if (pArrayListEmployee!=NULL)
+	{
+		if (utn_getNumeroInt(&respuesta, "\nEsta seguro de hacer una copia de la lista?\nSI:1\nNO:0", "\nError\n", 0, 3, 3)==0)
+		{
+			if(respuesta==1)
+			{
+				pL =ll_clone(pArrayListEmployee);
+				if (pL!=NULL)
+				{
+					if (ll_containsAll(pL, pArrayListEmployee)==1)
+					{
+						controller_ListEmployee(pL);
+						printf("\nLista creada exitosamente\n");
+						controller_saveAsText(pFile, pL);
+						retorno = 0;
+					}
+					else
+					{
+						printf("\nError, no se pudo guardar la lista");
+						ll_deleteLinkedList(pL);
+					}
+				}
+			}
+		}
+	}
+	return retorno;
+}
+/** \brief Verifica si la lista esta vacia o no
+ *
+ * \param pList LinkedList* Puntero a la lista
+ * \return LinkedList* Retorna  (-1) Error
+                                (0) Si ok
+*/
+
+int controller_isEmptyList(LinkedList* pArrayListEmployee)
+{
+	int retorno = -1;
+	int respuesta;
+	if (pArrayListEmployee!=NULL)
+	{
+		retorno = 0;
+		if (ll_isEmpty(pArrayListEmployee)==1)
+		{
+			printf("\nLa lista de empleados esta vacia\n");
+		}
+		else if (ll_isEmpty(pArrayListEmployee)==0)
+		{
+			printf("\nLa lista de empleados se encuentra cargada\n\n");
+			if (utn_getNumeroInt(&respuesta, "\nDesea ver el contenido de la lista?\nSI:1\nNO:0\n", "\nError\n", 0, 3, 3)==0)
+			{
+				if(respuesta==1)
+				{
+					controller_ListEmployee(pArrayListEmployee);
+				}
+			}
+		}
+	}
+	return retorno;
+}
